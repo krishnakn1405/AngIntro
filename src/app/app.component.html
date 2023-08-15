@@ -1,5 +1,23 @@
 <app-navbar></app-navbar>
 
-<h1>Angular App</h1>
+<h1 [class.text-red] = "bool">Angular App</h1>
 
-<app-post></app-post>
+<h1 [style.color] = "bool? 'red' : 'blue'">Style Binding</h1>
+
+<!-- event binding -->
+<button (click)="buttonClick()">Click Me</button>
+
+<!-- event filtering -->
+<input type="text" (keyup.enter) = "onKeyup()">
+
+<p>{{ message }}</p>
+
+<app-post [fromParent]='parentMessage' (messageEvent)='receivedMessage($event)'></app-post>
+
+<p>{{ fromChildOutput }}</p>
+
+<p>{{ message2 }}</p>
+
+<!-- Property Binding -->
+<img src="{{ imgUrl }}" alt="">
+<img [src]="imgUrl" alt="">
