@@ -12,9 +12,13 @@ export class AppComponent implements AfterViewInit {
   message: string;
   fromChildOutput: string;
 
+  userName:string;
+
   message2: string = 'Message from typescript file';
   imgUrl: string = 'https://www.mahithithana.in/backend/images/featured/robert-kiyosaki-all-book-summary-in-kannada.jpg';
   bool: boolean = false;
+
+  textValue:string = "Value is coming from component";
 
   @ViewChild(PostComponent) childComp
 
@@ -37,5 +41,10 @@ export class AppComponent implements AfterViewInit {
 
   onKeyup() {
     console.log("Key pressed!");
+  }
+
+  onKeyup2() {
+    // console.log(this.userName)
+    console.log(this.textValue);
   }
 }
