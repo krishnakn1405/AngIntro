@@ -7,6 +7,21 @@ import { PostComponent } from './post/post.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
+
+  isActive:boolean = true;
+  
+  stepForm: string;
+
+  postArray: Array<string> = ['Post 1', 'Post 2', 'Post 3', 'Post 4', 'Post 5'];
+
+  objArray: Array<any> = []
+  //   {id: 1, postTitle: 'Post 1'},
+  //   {id: 2, postTitle: 'Post 2'},
+  //   {id: 3, postTitle: 'Post 3'},
+  //   {id: 4, postTitle: 'Post 4'},
+  //   {id: 5, postTitle: 'Post 5'},
+  // ]
+
   title = 'AngIntro';
   parentMessage: string = 'Message from parent component changed';
   message: string;
@@ -23,7 +38,11 @@ export class AppComponent implements AfterViewInit {
   @ViewChild(PostComponent) childComp
 
   constructor() {
-    console.log(this.childComp);
+    // console.log(this.childComp);
+
+    for (let i = 0; i < this.postArray.length; i++) {
+      console.log(this.postArray[i]);
+    }
   }
 
   ngAfterViewInit(): void {
@@ -47,4 +66,18 @@ export class AppComponent implements AfterViewInit {
     // console.log(this.userName)
     console.log(this.textValue);
   }
+
+  addNew(){
+    this.objArray.push({ id: 6, postTitle: "Post 6"})
+  }
+
+  onDelete(index){
+    // let index = this.objArray.indexOf(i);
+    this.objArray.splice(index, 1);
+  }
+
+  onClick(status){
+    this.stepForm = status;
+  }
+
 }

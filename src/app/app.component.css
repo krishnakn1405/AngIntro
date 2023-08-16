@@ -1,3 +1,11 @@
 .text-red{
     color: red;
 }
+
+.main{
+    color: purple;
+}
+
+.text-weight{
+    font-weight: 600;
+}

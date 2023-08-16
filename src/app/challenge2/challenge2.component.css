@@ -1,0 +1,13 @@
+.form-area, .table-area{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.table-area{
+    display: flex;
+    justify-content: center;
+}
+
+h4{
+    text-align: center;
+}

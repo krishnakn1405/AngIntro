@@ -1,26 +1,128 @@
+<app-challenge2></app-challenge2>
+
+<h3>style with ngClass</h3>
+
+<p 
+[ngClass] = "{
+    'main': isActive,
+    'text-weight': isActive
+}"
+>Hi this is ngClass</p>
+
+<h1>ngStyle</h1>
+
+<h3>style without ngStyle</h3>
+<p 
+[style.color] = "isActive ? 'red' : 'blue'"
+[style.textTransform] = "isActive ? 'uppercase' : 'lowercase'"
+>Angular Course</p>
+
+<h3>style with ngStyle</h3>
+
+<p 
+[ngStyle] = "{
+    color: isActive ? 'red' : 'black',
+    textTransform: isActive ? 'uppercase' : 'lowercase'
+}"
+>Hi this is ngStyle</p>
+
+<h1>ngSwitchCase</h1>
+
+<div>
+    <button (click)="onClick('step 1')">Step 1</button>
+    <button (click)="onClick('step 2')">Step 2</button>
+    <button (click)="onClick('step 3')">Step 3</button>
+</div>
+
+<div [ngSwitch] = "stepForm">
+    <div *ngSwitchCase = "'step 1'">Step 1 Form</div>
+    <div *ngSwitchCase = "'step 2'">Step 2 Form</div>
+    <div *ngSwitchCase = "'step 3'">Step 3 Form</div>
+    <div *ngSwitchDefault>Something else</div>
+</div>
+
+<h1>ngIf else part</h1>
+
+<div *ngIf='objArray.length > 0; then postList else noData'></div>
+
+<ng-template #postList>
+    <ul>
+        <li *ngFor="let post of objArray; let i = index">
+            {{ i }} {{ post.postTitle }}
+            <button (click)="onDelete(i)">Delete</button>
+        </li>
+    </ul>
+</ng-template>
+
+
+<ng-template #noData>
+    <p>No data to fetch</p>
+</ng-template>
+
+<h1>ngIf</h1>
+
+<div *ngIf='objArray.length > 0'>
+    <ul>
+        <li *ngFor="let post of objArray; let i = index">
+            {{ i }} {{ post.postTitle }}
+            <button (click)="onDelete(i)">Delete</button>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf='objArray.length == 0'>
+    <p>No data to fetch</p>
+</div>
+
+<p>{{ postArray }}</p>
+
+<ul>
+    <li>{{ postArray[0] }}</li>
+    <li>{{ postArray[1] }}</li>
+    <li>{{ postArray[2] }}</li>
+    <li>{{ postArray[3] }}</li>
+    <li>{{ postArray[4] }}</li>
+</ul>
+
+<h2>Fetched using ngFor</h2>
+<ul>
+    <li *ngFor="let post of postArray"> {{ post }} </li>
+</ul>
+
+<h2>Fetched object using ngFor</h2>
+
+<button (click)="addNew()">Add New Data</button>
+
+<ul>
+    <li *ngFor="let post of objArray; let i = index">
+        {{ i }} {{ post.postTitle }}
+        <button (click)="onDelete(i)">Delete</button>
+    </li>
+</ul>
+
 <app-challenge1></app-challenge1>
 
 <app-navbar></app-navbar>
 
-<h1 [class.text-red] = "bool">Angular App</h1>
+<h1 [class.text-red]="bool">Angular App</h1>
 
-<h1 [style.color] = "bool? 'red' : 'blue'">Style Binding</h1>
+<h1 [style.color]="bool? 'red' : 'blue'">Style Binding</h1>
 
 <!-- Event Binding -->
 <button (click)="buttonClick()">Click Me</button>
 
 <!-- Event Filtering -->
-<input type="text" (keyup.enter) = "onKeyup()"> <br>
+<input type="text" (keyup.enter)="onKeyup()"> <br>
 
 <!-- Template Variable 
 <input type="text" (keyup) = "onKeyup2(username.value)" #username > -->
 
-<input type="text" [(ngModel)] = "userName" (keyup.enter) = "onKeyup2()"> <br>
+<input type="text" [(ngModel)]="userName" (keyup.enter)="onKeyup2()"> <br>
 
 <!-- one-way and two-way data binding -->
-<input type="text" [value] = 'textValue' (keyup.enter) = "onKeyup2()">
+<input type="text" [value]='textValue' (keyup.enter)="onKeyup2()">
 
-<input type="text" [(ngModel)] = "textValue"  (keyup.enter) = "onKeyup2()">
+<input type="text" [(ngModel)]="textValue" (keyup.enter)="onKeyup2()">
 
 <p>{{ message }}</p>
 
