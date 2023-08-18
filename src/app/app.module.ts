@@ -14,6 +14,7 @@ import { AppendPipe } from './pipes/append.pipe';
 import { AppendCliPipe } from './pipes/append-cli.pipe';
 import { SummaryPipe } from './pipes/summary.pipe';
 import { PostService } from './services/post.service';
+import { Challenge3Component } from './challenge3/challenge3.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PostService } from './services/post.service';
     AppendPipe,
     AppendCliPipe,
     SummaryPipe,
+    Challenge3Component,
   ],
   imports: [
     BrowserModule,
