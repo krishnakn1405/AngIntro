@@ -1,0 +1,56 @@
+<h2>Challenge 4 - Reactive Form</h2>
+
+<div class="form-area container mt-5">
+  <form [formGroup]= 'form' (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>First name</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Full name"
+        name="fullName"
+        formControlName= 'fullName'
+      />
+
+      <div class="alert alert-danger" *ngIf= "form.get('fullName').touched && form.get('fullName').invalid">
+        <div *ngIf= "form.get('fullName').errors?.['required']">Full name is required</div>
+        <div *ngIf= "form.get('fullName').errors?.['minlength']">Full name must be atleast 5 characters</div>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Email"
+        name="email"
+        formControlName= 'email'
+      />
+
+      <div class="alert alert-danger" *ngIf= "Email.touched && Email.invalid">
+        <div *ngIf= "Email.errors?.['required']">Email is required</div>
+        <div *ngIf= "Email.errors?.['email']">Invalid email</div>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label>Address</label>
+      <textarea
+        placeholder="Address"
+        class="form-control"
+        cols="30"
+        rows="10"
+        name="address"
+        formControlName= 'address'
+      ></textarea>
+
+      <div class="alert alert-danger" *ngIf= "Address.touched && Address.invalid">
+        <div *ngIf= "Address.errors?.['required']">Address is required</div>
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary mb-5" type="submit" [disabled]= "form.invalid">Submit</button>
+  </form>
+</div>

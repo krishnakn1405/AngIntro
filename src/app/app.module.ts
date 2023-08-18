@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { AppendCliPipe } from './pipes/append-cli.pipe';
 import { SummaryPipe } from './pipes/summary.pipe';
 import { PostService } from './services/post.service';
 import { Challenge3Component } from './challenge3/challenge3.component';
+import { Challenge4Component } from './challenge4/challenge4.component';
 
 @NgModule({
   declarations: [
@@ -28,10 +29,12 @@ import { Challenge3Component } from './challenge3/challenge3.component';
     AppendCliPipe,
     SummaryPipe,
     Challenge3Component,
+    Challenge4Component,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [
