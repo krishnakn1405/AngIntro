@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { PostService } from '../services/post.service';
+import { Post } from '../models/post';
 
 @Component({
   selector: 'app-post',
@@ -6,6 +8,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
+
+  posts2: Array<any>;
+
+  constructor(private postService: PostService ) {
+    // let postService = new PostService();
+    this.posts2 = postService.postList;
+  }
+
   title:string = "List of posts"
   messagePost:string = "Message sent"
 
@@ -21,5 +31,15 @@ export class PostComponent {
 
   sendMessage(){
     this.messageEvent.emit(this.outputChildMessage)
+  }
+
+  addNewData(){
+
+    let newPost: Post = {
+      id: 7,
+      postTitle: "Post 7"
+    }
+
+    this.postService.addPost(newPost);
   }
 }

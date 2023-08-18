@@ -1,5 +1,12 @@
-<h1>{{ messagePost }}</h1>
+<button (click)= "addNewData()">Add New</button>
 
+<ul>
+    <li *ngFor = "let post of posts2">
+        {{ post.postTitle }}
+    </li>
+</ul>
+
+<h1>{{ messagePost }}</h1>
 
 <h3>{{ fromParent }}</h3>
 

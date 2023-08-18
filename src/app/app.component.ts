@@ -8,6 +8,33 @@ import { PostComponent } from './post/post.component';
 })
 export class AppComponent implements AfterViewInit {
 
+  title2: string = "Angular Course";
+  count: number = 285645;
+  dcValue: number = 3.85674;
+  price: number = 99.99;
+  today: Date = new Date();
+
+  dummyText: string = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque autem quae voluptatum reprehenderit pariatur vitae veritatis animi, amet nihil temporibus repellat hic. Nemo totam velit quo quibusdam quisquam vero fuga ipsa pariatur? Ullam veritatis tenetur illum necessitatibus a. Accusantium impedit, id dignissimos odio provident eos repellat illum aliquam ea suscipit!";
+
+  userdetails = {
+    name: "User 1",
+    city: "Newyork",
+    countryCode: "US"
+  }
+
+  postArray2: Array<string> = [
+    "post 1",
+    "post 2",
+    "post 3",
+    "post 4",
+    "post 5"
+  ]
+
+  postObj: object = {
+    id: 1,
+    postTitle: "Post 1"
+  }
+
   isActive:boolean = true;
   
   stepForm: string;

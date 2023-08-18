@@ -10,6 +10,10 @@ import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { Challenge1Component } from './challenge1/challenge1.component';
 import { Challenge2Component } from './challenge2/challenge2.component';
+import { AppendPipe } from './pipes/append.pipe';
+import { AppendCliPipe } from './pipes/append-cli.pipe';
+import { SummaryPipe } from './pipes/summary.pipe';
+import { PostService } from './services/post.service';
 
 @NgModule({
   declarations: [
@@ -18,14 +22,19 @@ import { Challenge2Component } from './challenge2/challenge2.component';
     PostComponent,
     PostListComponent,
     Challenge1Component,
-    Challenge2Component
+    Challenge2Component,
+    AppendPipe,
+    AppendCliPipe,
+    SummaryPipe,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    PostService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
