@@ -15,7 +15,7 @@ export class Challenge4Component
 
   constructor( fb: FormBuilder )
   {
-    fb.group({
+    this.form= fb.group({
       fullName: ['',[
         Validators.required,
         Validators.minLength(5)
@@ -24,30 +24,41 @@ export class Challenge4Component
         Validators.required,
         Validators.email
       ]],
-    })
 
-    this.form= new FormGroup({
-      fullName: new FormControl('', [
-        Validators.required,
-        Validators.minLength(5)
-      ]),
-      email: new FormControl('', [
-        Validators.required,
-        //Validators.pattern(this.emailRegex)
-        Validators.email
-      ]),
-
-      contactDetails: new FormGroup({
-        address: new FormControl('', Validators.required),
-        shippingAddress: new FormControl('',Validators.required),
-        contactNo: new FormControl('',[
+      contactDetails: fb.group({
+        address: ['', Validators.required],
+        shippingAddress: ['', Validators.required],
+        contactNo: ['', [
           Validators.required,
           Validators.pattern(this.contactRegex)
-        ])
+        ]]
       }),
 
-      skills: new FormArray([])
+      skills: fb.array([])
     })
+
+    // this.form= new FormGroup({
+    //   fullName: new FormControl('', [
+    //     Validators.required,
+    //     Validators.minLength(5)
+    //   ]),
+    //   email: new FormControl('', [
+    //     Validators.required,
+    //     //Validators.pattern(this.emailRegex)
+    //     Validators.email
+    //   ]),
+
+    //   contactDetails: new FormGroup({
+    //     address: new FormControl('', Validators.required),
+    //     shippingAddress: new FormControl('',Validators.required),
+    //     contactNo: new FormControl('',[
+    //       Validators.required,
+    //       Validators.pattern(this.contactRegex)
+    //     ])
+    //   }),
+
+    //   skills: new FormArray([])
+    // })
   }
 
   get Email()
