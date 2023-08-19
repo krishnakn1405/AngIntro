@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, NgForm, Validators } from '@angular/forms';
+import { FormGroup, FormControl, NgForm, Validators, FormArray, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-challenge4',
@@ -9,10 +9,23 @@ import { FormGroup, FormControl, NgForm, Validators } from '@angular/forms';
 export class Challenge4Component
 {
   form: any;
+  contactDetails: any;
   emailRegex: string= "[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$";
+  contactRegex: string= "[789][0-9][9]";
 
-  constructor()
+  constructor( fb: FormBuilder )
   {
+    fb.group({
+      fullName: ['',[
+        Validators.required,
+        Validators.minLength(5)
+      ]],
+      email: ['',[
+        Validators.required,
+        Validators.email
+      ]],
+    })
+
     this.form= new FormGroup({
       fullName: new FormControl('', [
         Validators.required,
@@ -23,7 +36,17 @@ export class Challenge4Component
         //Validators.pattern(this.emailRegex)
         Validators.email
       ]),
-      address: new FormControl('', Validators.required)
+
+      contactDetails: new FormGroup({
+        address: new FormControl('', Validators.required),
+        shippingAddress: new FormControl('',Validators.required),
+        contactNo: new FormControl('',[
+          Validators.required,
+          Validators.pattern(this.contactRegex)
+        ])
+      }),
+
+      skills: new FormArray([])
     })
   }
 
@@ -34,12 +57,42 @@ export class Challenge4Component
 
   get Address()
   {
-    return this.form.get('address');
+    return this.form.get('contactDetails.address');
+  }
+
+  get ShippingAddress()
+  {
+    return this.form.get('contactDetails.shippingAddress');
+  }
+
+  get Contact()
+  {
+    return this.form.get('contactDetails.contactNo');
+  }
+
+  get Skills()
+  {
+    return this.form.get('skills') as FormArray;
   }
 
   onSubmit()
   {
     console.log(this.form.value);
-    
+  }
+
+  addSkills(skills: HTMLInputElement)
+  {
+    this.Skills.push(
+      new FormControl(skills.value)
+    );
+
+    skills.value= '';
+
+    console.log(this.form.value);
+  }
+
+  removeSkills(index)
+  {
+    this.Skills.removeAt(index);
   }
 }

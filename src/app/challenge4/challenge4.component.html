@@ -34,21 +34,71 @@
       </div>
 
     </div>
-    <div class="form-group">
-      <label>Address</label>
-      <textarea
-        placeholder="Address"
-        class="form-control"
-        cols="30"
-        rows="10"
-        name="address"
-        formControlName= 'address'
-      ></textarea>
 
-      <div class="alert alert-danger" *ngIf= "Address.touched && Address.invalid">
-        <div *ngIf= "Address.errors?.['required']">Address is required</div>
+    <!-- Contact details nested Form Group -->
+    <div formGroupName= 'contactDetails'>
+      <div class="form-group">
+        <label>Address</label>
+        <textarea
+          placeholder="Address"
+          class="form-control"
+          cols="30"
+          rows="10"
+          name="address"
+          formControlName= 'address'
+        ></textarea>
+  
+        <div class="alert alert-danger" *ngIf= "Address.touched && Address.invalid">
+          <div *ngIf= "Address.errors?.['required']">Address is required</div>
+        </div>
+  
+      </div>
+  
+      <div class="form-group">
+        <label>Shipping Address</label>
+        <textarea
+          placeholder="Shipping address"
+          class="form-control"
+          cols="30"
+          rows="10"
+          name="shippingaddress"
+          formControlName= 'shippingAddress'
+        ></textarea>
+  
+        <div class="alert alert-danger" *ngIf= "ShippingAddress.touched && ShippingAddress.invalid">
+          <div *ngIf= "ShippingAddress.errors?.['required']">Shipping address is required</div>
+        </div>
+  
+      </div>
+  
+      <div class="form-group">
+        <label>Contact No</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Contact No"
+          name="contact"
+          formControlName= 'contactNo'
+        />
+  
+        <div class="alert alert-danger" *ngIf= "Contact.touched && Contact.invalid">
+          <div *ngIf= "Contact.errors?.['required']">Contact is required</div>
+          <div *ngIf= "Contact.errors?.['pattern']">Invalid contact</div>
+        </div>
+  
       </div>
 
+      <div class="form-group">
+        <label>Skills</label>
+        <input type="text" class="form-control" #skill (keyup.enter)= 'addSkills(skill)'>
+
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor= "let skill of Skills.controls; let i= index">
+            {{ skill.value }}
+            <a class="btn btn-sm btn-danger" (click)= "removeSkills(i)"> X </a>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <button class="btn btn-primary mb-5" type="submit" [disabled]= "form.invalid">Submit</button>
