@@ -16,6 +16,7 @@ import { SummaryPipe } from './pipes/summary.pipe';
 import { PostService } from './services/post.service';
 import { Challenge3Component } from './challenge3/challenge3.component';
 import { Challenge4Component } from './challenge4/challenge4.component';
+import { Challenge5Component } from './challenge5/challenge5.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { Challenge4Component } from './challenge4/challenge4.component';
     SummaryPipe,
     Challenge3Component,
     Challenge4Component,
+    Challenge5Component,
   ],
   imports: [
     BrowserModule,

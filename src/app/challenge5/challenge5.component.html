@@ -1,0 +1,29 @@
+<div class="container">
+    <form [formGroup]= 'form'>
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" formControlName= 'username'>
+
+            <div class="alert alert-danger" *ngIf= "fc.username.touched && fc.username.invalid">
+                <div *ngIf= "fc.username.errors?.['required']">Username is required</div>
+                <div *ngIf= "fc.username.errors?.['minlength']">Username must be atleast 5 characters</div>
+                <div *ngIf= "fc.username.errors?.['noSpaceValidator']">Username cannot contain spaces</div>
+              </div>
+
+              <!-- <div class="alert alert-danger" *ngIf= "fc.username.touched && fc.username.invalid">
+                <div *ngIf= "fc.username.errors?.['noSpaceValidator']">Username cannot contain spaces</div>
+              </div> -->
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="text" class="form-control" formControlName= 'password'>
+
+            <div class="alert alert-danger" *ngIf= "fc.password.touched && fc.password.invalid">
+                <div *ngIf= "fc.password.errors?.['required']">Password is required</div>
+              </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
